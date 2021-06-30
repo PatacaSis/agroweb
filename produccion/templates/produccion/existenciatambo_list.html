@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+          Existencias de Bovinos de Tambo
+          <a href="{% url 'produccion:existenciatambo-crear' %}" style="margin-left:20px;"><i class="fa fa-plus-square" aria-hidden="true" style="color:#050505; 
+            padding: 2px;"></i></a>
+        </div>
+        <div class="card-body">
+            <table id="miTabla" class="display compact" style="font-size: 13px;">
+                {% if object_list %}
+              <thead>
+                  <tr>
+                      <th>Fecha</th>
+                      <th>VO</th>
+                      <th>VS</th>
+                      <th>Vaca Total</th>
+                      <th>Vaq PP</th>
+                      <th>Toros</th>
+                      <th>Total</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for v in object_list %}
+                  <tr>
+                      <td>{{v.fecha}}</td>
+                      <td>{{v.vo}}</td>
+                      <td>{{v.vs}}</td>
+                      <td>{{v.vtotal}}</td>
+                      <td>{{v.vaqpp}}</td>
+                      <!-- <td>{{v.vaqcserv}}</td> -->
+                      <td>{{v.to}}</td>
+                      <td>{{v.tg}}</td>
+                      <td>
+                          <a href="{% url 'produccion:existenciatambo-edit' v.pk %}" style="margin-left:20px;"><i class="fa fa-edit" aria-hidden="true" style="color:#050505; 
+                            padding: 2px;"></i></a>
+                          <a href="{% url 'produccion:existenciatambo-delete' v.pk %}" style="margin-left:20px;"><i class="fa fa-trash-alt" aria-hidden="true" style="color:#050505; 
+                            padding: 2px;"></i></a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              {% else %}
+            <h6>No se ingresaron registros al sistema</h6>
+            {% endif %}
+        </div>
+      </div>
+</div>
+{% endblock %}
