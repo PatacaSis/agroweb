@@ -48,19 +48,25 @@
         <a class="navbar-brand" href="#">AgroWeb</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <div class="navbar-nav">
-            <li><a class="nav-item nav-link" href="{% url 'index' %}">Inicio</a></li>
+            
+            <li><a class="" href="{% url 'index' %}">
+              <img class='iconos' src="{% static 'img/inicio1.png'%}">
+            </a>
+            </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Datos
+                <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class='iconos' src="{% static 'img/base.png'%}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{% url 'produccion:alimento' %}">Tipo alimentos</a>
                 </div>
               </li>
-            <li><a class="nav-item nav-link" href="{% url 'produccion:leche_list' %}">P.Leche</a></li>
+            <li><a class="" href="{% url 'produccion:leche_list' %}">
+              <img class='iconos' src="{% static 'img/leche1.png'%}">
+            </a></li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Existencias
+                <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class='iconos' src="{% static 'img/vaca3.jpeg'%}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{% url 'produccion:existenciatambo-list' %}">Rodeo de Tambo</a>
@@ -68,8 +74,8 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Gastos
+                <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class='iconos' src="{% static 'img/economico.png'%}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Todos los gastos</a>
@@ -86,13 +92,13 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Ventas
+                <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class='iconos' src="{% static 'img/economico2.jpeg'%}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Todas las ventas</a>
                   <a class="dropdown-item" href="#">Ventas de leche</a>
-                  <a class="dropdown-item" href="#">Ventas de bovinos</a>
+                  <a class="dropdown-item" href="#">Ventas de carne</a>
                 </div>
               </li>
         </div>

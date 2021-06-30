@@ -20,6 +20,18 @@ body
 #item:hover #desple{
     display: block;
 }
+.navbar-brand{
+    margin-right: 100px;
+}
+.iconos{
+    /* background-color: grey; */
+    width: 40px;
+    border: 1.5px solid grey;
+    border-radius: 5px;
+    padding: 3px;
+    margin-left: 10px;
+}
+
 
 /* .menu-bar{
     background: rgb(0,100,0);
