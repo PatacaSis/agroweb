@@ -10,11 +10,6 @@ class FechasForm(forms.Form):
     inicio = forms.DateField()
     final = forms.DateField()
 
-# class CatAnimalForm(forms.ModelForm):
-#     class Meta:
-#         model = CatAnimal
-#         fields = '__all__'
-
 class AlimentoForm(forms.ModelForm):
     class Meta:
         model = Alimento

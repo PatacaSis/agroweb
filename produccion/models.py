@@ -28,6 +28,8 @@ class ProdLeche(models.Model):
 
 class Alimento(models.Model):
     alimento = models.CharField('Alimento', max_length=100,blank=False,null=False)
+    ms = models.DecimalField(verbose_name='Materia Seca', default=0.00,max_digits=4,decimal_places=2,null=True,blank=True)
+    pt = models.DecimalField(verbose_name='Porcentaje proteico', default=0.00,max_digits=4,decimal_places=2,null=True,blank=True)
 
     class Meta:
         verbose_name = 'Alimento'

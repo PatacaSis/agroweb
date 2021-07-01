@@ -91,8 +91,8 @@ class GastoMO(models.Model):
 class Gasto(models.Model):
     fecha = models.DateField()
     comprobante = models.CharField(max_length=10)
-    rubro = models.CharField(max_length=10,blank=True,null=True)
-    subrubro = models.CharField(max_length=10)
+    rubro = models.ForeignKey(RubroGasto, on_delete=models.CASCADE)
+    subrubro = models.ForeignKey(Subrubro, on_delete=models.CASCADE)
     concepto = models.CharField(max_length=150)
     cantidad = models.IntegerField()
     unidades = models.ForeignKey(Umedida, verbose_name='Unidad de medida', on_delete=models.CASCADE)

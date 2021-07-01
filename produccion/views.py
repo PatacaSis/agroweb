@@ -14,25 +14,21 @@ class ProdLecheList(ListView):
 
 def Pl_fechas(request,inicio,fin):
     form = FechasForm(request.POST)
+    
     if request.method == 'POST':
-        
         if form.is_valid():
             inicio = form.cleaned_data['inicio']
             fin = form.cleaned_data['final']
-    qs = ProdLeche.objects.filter(fecha__range=[inicio, fin])   
+    
+    qs = ProdLeche.objects.filter(fecha__range=[inicio, fin])
+    
     suma = 0
     for dato in qs:
         d = dato.lts_total
         suma = suma + d
-        ctx = {'qs': qs, 'suma': suma, 'form':form}
+    ctx = {'qs': qs, 'suma': suma, 'form':form}
     return render(request, 'produccion/prueba.html', ctx)  
          
-       
-
-    
-    
-    
-
 class ProdLecheCreate(CreateView):
     model = ProdLeche
     form_class = ProdLecheForm
@@ -85,8 +81,6 @@ class RecriaUpdate(UpdateView):
 class RecriaDelete(DeleteView):
     model = ExistenciaRecria
     success_url =  reverse_lazy('produccion:recria-list')  
-
-
 
 #====== Vistas para Tipos de Alimentos ================
 

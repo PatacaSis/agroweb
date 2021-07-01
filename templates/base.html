@@ -32,13 +32,7 @@
     {% endif %}
     {% if user.is_authenticated %}
     <div>
-        <p style="text-align:center;
-         font-family:Raleway;
-         font: size 12px;
-         background-color: green;
-         color: white;
-         margin-bottom: 0px;
-         ">Bienvenid@ a la app Agroweb | <a style="color:white;" href="{%url 'salir' %}">Salir</a></p>
+      <p class="titulo">Bienvenid@ {{user}} a la app Agroweb | <a style="color:white;" href="{%url 'salir' %}">Salir</a></p>
     </div>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-toggleable-sm sticky-top">
@@ -59,17 +53,28 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{% url 'produccion:alimento' %}">Tipo alimentos</a>
+                  <a class="dropdown-item" href="{% url 'economico:rubro-gasto' %}">Rubros de gastos</a>
+                  <a class="dropdown-item" href="{% url 'economico:rubro-venta' %}">Rubros de ventas</a>
+                  <a class="dropdown-item" href="{% url 'produccion:alimento' %}">Sub-rubro de gastos</a>
+                  <a class="dropdown-item" href="{% url 'produccion:alimento' %}">Unidad de medidas</a>
                 </div>
-              </li>
-            <li><a class="" href="{% url 'produccion:leche_list' %}">
-              <img class='iconos' src="{% static 'img/leche1.png'%}">
-            </a></li>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class='iconos' src="{% static 'img/leche1.png'%}">
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'produccion:leche_list' %}">Producción de leche</a>
+                <a class="dropdown-item" href="{% url 'produccion:existenciatambo-list' %}">Rodeo de Tambo</a>
+              </div>
+          </li>
+            <li></li>
             <li class="nav-item dropdown">
                 <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img class='iconos' src="{% static 'img/vaca3.jpeg'%}">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{% url 'produccion:existenciatambo-list' %}">Rodeo de Tambo</a>
+                  
                   <a class="dropdown-item" href="{% url 'produccion:recria-list' %}">Rodeo de Recría</a>
                 </div>
               </li>
@@ -99,6 +104,23 @@
                   <a class="dropdown-item" href="#">Todas las ventas</a>
                   <a class="dropdown-item" href="#">Ventas de leche</a>
                   <a class="dropdown-item" href="#">Ventas de carne</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class='iconos' src="{% static 'img/informe.jpg'%}">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Informe de producción</a>
+                  <a class="dropdown-item" href="#">Informe económico </a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class='iconos' src="{% static 'img/manual1.jpeg'%}">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Manual del usuario</a>
                 </div>
               </li>
         </div>
