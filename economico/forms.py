@@ -10,4 +10,13 @@ class RubroVentaForm(forms.ModelForm):
     class Meta:
         model = RubroVenta
         fields = '__all__'
-    
+
+class SubRubroGastoForm(forms.ModelForm):
+    class Meta:
+        model = Subrubro
+        fields = '__all__'
+
+class UmedidaForm(forms.ModelForm):
+    class Meta:
+        model = Umedida
+        fields = '__all__'
