@@ -4,34 +4,34 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-          Unidades de medidas
-          <a href="{% url 'economico:dato-umedida-crear' %}" style="margin-left:20px;"><i class="fa fa-plus-square" aria-hidden="true" style="color:#050505; 
+          Listado de clientes
+          <a href="{% url 'economico:dato-cliente-crear' %}" style="margin-left:20px;"><i class="fa fa-plus-square" aria-hidden="true" style="color:#050505; 
             padding: 2px;"></i></a>
         </div>
         <div class="card-body">
             <table id="miTabla" class="display compact" style="font-size: 13px;">
-                {% if object_list %}
+                {% if clientes %}
               <thead>
                   <tr>
-                      <th>Nombre</th>
+                      <th>Razón Social</th>
                       <th></th>
                   </tr>
               </thead>
               <tbody>
-                  {% for medida in object_list %}
+                  {% for cliente in clientes %}
                   <tr>
-                      <td>{{medida.nombre}}</td>
+                      <td>{{cliente.razon_social}}</td>
                       <td>
-                          <a href="{% url 'economico:dato-umedida-edit' medida.pk %}" style="margin-left:20px;"><i class="fa fa-edit" aria-hidden="true" style="color:#050505; 
+                          <a href="{% url 'economico:dato-cliente-edit' cliente.pk %}" style="margin-left:20px;"><i class="fa fa-edit" aria-hidden="true" style="color:#050505; 
                             padding: 2px;"></i></a>
-                          <a href="{% url 'economico:dato-umedida-delete' medida.pk %}" style="margin-left:20px;"><i class="fa fa-trash-alt" aria-hidden="true" style="color:#050505; 
+                          <a href="{% url 'economico:dato-cliente-delete' cliente.pk %}" style="margin-left:20px;"><i class="fa fa-trash-alt" aria-hidden="true" style="color:#050505; 
                             padding: 2px;"></i></a>
                       </td>
                   </tr>
                   {% endfor %}
               </tbody>
               {% else %}
-            <h6>No se registran unidades de medidas</h6>
+            <h6>No se registran clientes</h6>
             {% endif %}
         </div>
       </div>

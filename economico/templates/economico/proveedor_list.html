@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+          Listado de proveedores
+          <a href="{% url 'economico:dato-proveedor-crear' %}" style="margin-left:20px;"><i class="fa fa-plus-square" aria-hidden="true" style="color:#050505; 
+            padding: 2px;"></i></a>
+        </div>
+        <div class="card-body">
+            <table id="miTabla" class="display compact" style="font-size: 13px;">
+                {% if proveedores %}
+              <thead>
+                  <tr>
+                      <th>Razón Social</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for proveedor in proveedores %}
+                  <tr>
+                      <td>{{proveedor.razon_social}}</td>
+                      <td>
+                          <a href="{% url 'economico:dato-proveedor-edit' proveedor.pk %}" style="margin-left:20px;"><i class="fa fa-edit" aria-hidden="true" style="color:#050505; 
+                            padding: 2px;"></i></a>
+                          <a href="{% url 'economico:dato-proveedor-delete' proveedor.pk %}" style="margin-left:20px;"><i class="fa fa-trash-alt" aria-hidden="true" style="color:#050505; 
+                            padding: 2px;"></i></a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+              {% else %}
+            <h6>No se registraron proveedores</h6>
+            {% endif %}
+        </div>
+      </div>
+</div>
+{% endblock %}

@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic.list import ListView
-from .models import RubroGasto,RubroVenta,Subrubro,Umedida
-from .forms import RubroGastoForm,RubroVentaForm,SubRubroGastoForm,UmedidaForm
+from .models import RubroGasto,RubroVenta,Subrubro,Umedida,Empleado,Cliente,Proveedor
+from .forms import RubroGastoForm,RubroVentaForm,SubRubroGastoForm,UmedidaForm,EmpleadoForm,ClienteForm,ProveedorForm
 
 class RubroGastoList(ListView):
     model = RubroGasto
@@ -77,3 +77,72 @@ class UmedidaDelete(DeleteView):
     model = Umedida
     form_class = UmedidaForm
     success_url = reverse_lazy('economico:dato-umedida')
+
+def EmpleadoList(request):
+    empleados = Empleado.objects.filter(estado=True)
+    return render(request, 'economico/empleado_list.html', {'empleados':empleados})
+
+class EmpleadoCrear(CreateView):
+    model = Empleado
+    form_class = EmpleadoForm
+    success_url = reverse_lazy('economico:dato-empleado')
+
+class EmpleadoEdit(UpdateView):
+    model = Empleado
+    form_class = EmpleadoForm
+    success_url = reverse_lazy('economico:dato-empleado')
+
+class EmpleadoDelete(DeleteView):
+    model = Empleado
+
+    def post(self,request, pk,*args,**kwargs):
+        object = Empleado.objects.get(id = pk)
+        object.estado = False
+        object.save()
+        return redirect('economico:dato-empleado')
+
+def ProveedorList(request):
+    proveedores = Proveedor.objects.filter(estado=True)
+    return render(request, 'economico/proveedor_list.html', {'proveedores':proveedores})
+
+class ProveedorCrear(CreateView):
+    model = Proveedor
+    form_class = ProveedorForm
+    success_url = reverse_lazy('economico:dato-proveedor')
+
+class ProveedorEdit(UpdateView):
+    model = Proveedor
+    form_class = ProveedorForm
+    success_url = reverse_lazy('economico:dato-proveedor')
+
+class ProveedorDelete(DeleteView):
+    model = Proveedor
+
+    def post(self,request, pk,*args,**kwargs):
+        object = Proveedor.objects.get(id = pk)
+        object.estado = False
+        object.save()
+        return redirect('economico:dato-proveedor')
+
+def ClienteList(request):
+    clientes = Cliente.objects.filter(estado=True)
+    return render(request, 'economico/cliente_list.html', {'clientes':clientes})
+
+class ClienteCrear(CreateView):
+    model = Cliente
+    form_class = ClienteForm
+    success_url = reverse_lazy('economico:dato-cliente')
+
+class ClienteEdit(UpdateView):
+    model = Cliente
+    form_class = ClienteForm
+    success_url = reverse_lazy('economico:dato-cliente')
+
+class ClienteDelete(DeleteView):
+    model = Cliente
+
+    def post(self,request, pk,*args,**kwargs):
+        object = Cliente.objects.get(id = pk)
+        object.estado = False
+        object.save()
+        return redirect('economico:dato-cliente')

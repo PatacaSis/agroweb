@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RubroGastoList,RubroGastoEdit,RubroGastoCrear,RubroGastoDelete, RubroVentaEdit,RubroVentaList,RubroVentaCrear,RubroVentaDelete,SubrubroGastoList,SubrubroGastoCrear,SubrubroGastoEdit,SubrubroGastoDelete, UmedidaList,UmedidaCrear,UmedidaEdit,UmedidaDelete
+from .views import EmpleadoCrear, EmpleadoDelete, EmpleadoEdit, EmpleadoList, RubroGastoList,RubroGastoEdit,RubroGastoCrear,RubroGastoDelete, RubroVentaEdit,RubroVentaList,RubroVentaCrear,RubroVentaDelete,SubrubroGastoList,SubrubroGastoCrear,SubrubroGastoEdit,SubrubroGastoDelete, UmedidaList,UmedidaCrear,UmedidaEdit,UmedidaDelete,ClienteList,ClienteCrear,ClienteEdit,ClienteDelete,ProveedorList,ProveedorCrear,ProveedorEdit,ProveedorDelete
 
 
 
@@ -25,4 +25,19 @@ urlpatterns = [
     path('datos/u_medida/crear/', UmedidaCrear.as_view(), name='dato-umedida-crear'),
     path('datos/u_medida/editar/<int:pk>/', UmedidaEdit.as_view(), name='dato-umedida-edit'),
     path('datos/u_medida/borrar/<int:pk>/', UmedidaDelete.as_view(), name='dato-umedida-delete'),
+
+    path('datos/empleados/', EmpleadoList, name='dato-empleado'),
+    path('datos/empleados/crear/', EmpleadoCrear.as_view(), name='dato-empleado-crear'),
+    path('datos/empleados/editar/<int:pk>/', EmpleadoEdit.as_view(), name='dato-empleado-edit'),
+    path('datos/empleados/borrar/<int:pk>/', EmpleadoDelete.as_view(), name='dato-empleado-delete'),
+
+    path('datos/clientes/', ClienteList, name='dato-cliente'),
+    path('datos/clientes/crear/', ClienteCrear.as_view(), name='dato-cliente-crear'),
+    path('datos/clientes/editar/<int:pk>/', ClienteEdit.as_view(), name='dato-cliente-edit'),
+    path('datos/clientes/borrar/<int:pk>/', ClienteDelete.as_view(), name='dato-cliente-delete'),
+
+    path('datos/proveedores/', ProveedorList, name='dato-proveedor'),
+    path('datos/proveedores/crear/', ProveedorCrear.as_view(), name='dato-proveedor-crear'),
+    path('datos/proveedores/editar/<int:pk>/', ProveedorEdit.as_view(), name='dato-proveedor-edit'),
+    path('datos/proveedores/borrar/<int:pk>/', ProveedorDelete.as_view(), name='dato-proveedor-delete'),
 ]

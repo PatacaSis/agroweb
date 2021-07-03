@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RubroVenta,Subrubro,Gasto,Umedida,Empleado,GastoMO,Venta,RubroGasto
+from .models import RubroVenta,Subrubro,Gasto,Umedida,Empleado,GastoMO,Venta,RubroGasto,Cliente,Proveedor
 
 class GastoAdmin(admin.ModelAdmin):
     list_display = ['fecha','rubro','subrubro','importe','iva','imp_total']
@@ -15,4 +15,6 @@ admin.site.register(Umedida)
 admin.site.register(Empleado)
 admin.site.register(GastoMO)
 admin.site.register(Venta,VentaAdmin)
+admin.site.register(Cliente)
+admin.site.register(Proveedor)
 
