@@ -97,7 +97,6 @@ class Cliente(models.Model):
         return self.razon_social
 
 
-
 #================= Modelo para Gastos de Mano de obra==================
 
 CAT_EMPLEADO = (
@@ -131,6 +130,7 @@ class GastoMO(models.Model):
 #================= Modelo para Gastos Generales==================
 class Gasto(models.Model):
     fecha = models.DateField()
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE,blank=True,null=True)
     comprobante = models.CharField(max_length=10)
     rubro = models.ForeignKey(RubroGasto, on_delete=models.CASCADE)
     subrubro = models.ForeignKey(Subrubro, on_delete=models.CASCADE)

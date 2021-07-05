@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from dateutil.parser import parse
+from datetime import timedelta
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView
@@ -9,25 +11,47 @@ from .forms import ProdLecheForm,AlimentoForm,ExistenciaTamboForm,ExistenciaRecr
 #====== Vistas de la aplicacion produccion =============
 #====== Vistas para Produccion de Leche ================
 
-class ProdLecheList(ListView):
-    model = ProdLeche
+# class ProdLecheList(ListView):
+#     model = ProdLeche
 
-def Pl_fechas(request,inicio,fin):
-    form = FechasForm(request.POST)
+# def Pl_fechas(request,inicio,fin):
+#     form = FechasForm(request.POST)
     
-    if request.method == 'POST':
-        if form.is_valid():
-            inicio = form.cleaned_data['inicio']
-            fin = form.cleaned_data['final']
+#     if request.method == 'POST':
+#         if form.is_valid():
+#             inicio = form.cleaned_data['inicio']
+#             fin = form.cleaned_data['final']
     
-    qs = ProdLeche.objects.filter(fecha__range=[inicio, fin])
+#     qs = ProdLeche.objects.filter(fecha__range=[inicio, fin])
     
+#     suma = 0
+#     for dato in qs:
+#         d = dato.lts_total
+#         suma = suma + d
+#     ctx = {'qs': qs, 'suma': suma, 'form':form}
+#     return render(request, 'produccion/prueba.html', ctx)  
+
+def produccionleche_list(request):
+    template_name = 'produccion/prodleche_list.html'
+    object_list = ProdLeche.objects.all()
+
+    start_date=request.GET.get('start_date')
+    end_date=request.GET.get('end_date')
+
+    if start_date and end_date:
+        end_date = parse(end_date) + timedelta(1)
+        object_list = object_list.filter(
+            fecha__range = [start_date,end_date]
+        )
+
     suma = 0
-    for dato in qs:
+    for dato in object_list:
         d = dato.lts_total
         suma = suma + d
-    ctx = {'qs': qs, 'suma': suma, 'form':form}
-    return render(request, 'produccion/prueba.html', ctx)  
+
+    context = {'object_list': object_list, 'suma':suma}
+    return render(request, template_name, context)
+
          
 class ProdLecheCreate(CreateView):
     model = ProdLeche
@@ -46,9 +70,28 @@ class ProdLecheDelete(DeleteView):
 
 #====== Vistas para Existencias ================
 
-class Existencia(ListView):
-    model = ExistenciaTambo
+# class Existencia(ListView):
+#     model = ExistenciaTambo
+#     template_name = 'produccion/existenciatambo_list.html'
+
+def existencia_list(request):
     template_name = 'produccion/existenciatambo_list.html'
+    object_list = ExistenciaTambo.objects.all()
+
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    if start_date and end_date:
+        # Converte em data e adiciona um dia.
+        end_date = parse(end_date) + timedelta(1)
+        object_list = object_list.filter(
+            fecha__range = [start_date, end_date]
+         )
+
+    context = {'object_list':object_list}
+    return render(request, template_name, context)
+
+
 
 class ExistenciaCreate(CreateView):
     model = ExistenciaTambo

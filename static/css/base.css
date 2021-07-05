@@ -41,6 +41,12 @@ body
     margin-left: 10px;
 }
 
+#litros{
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+}
+
  .dataTables_wrapper .dataTables_filter{
      display: none;
  }

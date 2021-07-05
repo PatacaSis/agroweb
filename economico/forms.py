@@ -1,5 +1,5 @@
 from django import forms
-from .models import RubroGasto,RubroVenta,Subrubro,Umedida,Empleado,Cliente,Proveedor
+from .models import RubroGasto,RubroVenta,Subrubro,Umedida,Empleado,Cliente,Proveedor,Gasto
 
 class RubroGastoForm(forms.ModelForm):
     class Meta:
@@ -34,4 +34,9 @@ class ClienteForm(forms.ModelForm):
 class ProveedorForm(forms.ModelForm):
     class Meta:
         model = Proveedor
+        fields = '__all__'
+
+class GastoForm(forms.ModelForm):
+    class Meta:
+        model = Gasto
         fields = '__all__'

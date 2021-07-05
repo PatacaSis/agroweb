@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic.list import ListView
-from .models import RubroGasto,RubroVenta,Subrubro,Umedida,Empleado,Cliente,Proveedor
-from .forms import RubroGastoForm,RubroVentaForm,SubRubroGastoForm,UmedidaForm,EmpleadoForm,ClienteForm,ProveedorForm
-
+from .models import RubroGasto,RubroVenta,Subrubro,Umedida,Empleado,Cliente,Proveedor,Gasto
+from .forms import RubroGastoForm,RubroVentaForm,SubRubroGastoForm,UmedidaForm,EmpleadoForm,ClienteForm,ProveedorForm,GastoForm
+# Datos de configuración -----------------------------------------------------------
 class RubroGastoList(ListView):
     model = RubroGasto
 
@@ -146,3 +146,28 @@ class ClienteDelete(DeleteView):
         object.estado = False
         object.save()
         return redirect('economico:dato-cliente')
+
+# Datos de carga de gastos e ingresos -------------------------------------------------
+
+def GastosList(request):
+    gastos = Gasto.objects.filter(estado=True)
+    return render(request, 'economico/gasto_list.html', {'gastos':gastos})
+
+class GastoCrear(CreateView):
+    model = Gasto
+    form_class = GastoForm
+    success_url = reverse_lazy('economico:gasto')
+
+class GastoEdit(UpdateView):
+    model = Cliente
+    form_class = GastoForm
+    success_url = reverse_lazy('economico:gasto')
+
+class GastoDelete(DeleteView):
+    model = Gasto
+
+    def post(self,request, pk,*args,**kwargs):
+        object = Gasto.objects.get(id = pk)
+        object.estado = False
+        object.save()
+        return redirect('economico:gasto')

@@ -41,7 +41,7 @@ class Alimento(models.Model):
 
 
 class ExistenciaTambo(models.Model):
-    fecha = models.DateField()
+    fecha = models.DateTimeField()
     vo = models.IntegerField('VO',default=0)
     vs = models.IntegerField('VS',default=0)
     vaqpp = models.IntegerField('Vaq. PP',default=0)
