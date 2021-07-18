@@ -21,7 +21,7 @@ urlpatterns = [
     path('existencias/modificar/<int:pk>/', ExistenciaUpdate.as_view(), name='existenciatambo-edit'),
     path('existencias/eliminar/<int:pk>/', ExistenciaDelete.as_view(), name='existenciatambo-delete'),
 
-    path('recria/', Recria.as_view(), name='recria-list'),
+    path('recria/', recria_list, name='recria-list'),
     path('recria/crear/', RecriaCreate.as_view(), name='recria-crear'),
     path('recria/modificar/<int:pk>/', RecriaUpdate.as_view(), name='recria-edit'),
     path('recria/eliminar/<int:pk>/', RecriaDelete.as_view(), name='recria-delete'),

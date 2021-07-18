@@ -14,13 +14,13 @@ class ProdLeche(models.Model):
 
     def lts_totales(self):
         return self.venta + self.consumo
-
     lts_total = property(lts_totales)
 
     def lt_vo(self):
         return self.lts_total/self.vo
-
     ltsxvo = property(lt_vo)
+
+    
 
     def __str__(self):
         return str(self.fecha)
@@ -41,7 +41,7 @@ class Alimento(models.Model):
 
 
 class ExistenciaTambo(models.Model):
-    fecha = models.DateTimeField()
+    fecha = models.DateField()
     vo = models.IntegerField('VO',default=0)
     vs = models.IntegerField('VS',default=0)
     vaqpp = models.IntegerField('Vaq. PP',default=0)

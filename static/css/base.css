@@ -33,7 +33,6 @@ body
     margin-right: 100px;
 }
 .iconos{
-    /* background-color: grey; */
     width: 40px;
     border: 1.5px solid grey;
     border-radius: 5px;
@@ -41,9 +40,22 @@ body
     margin-left: 10px;
 }
 
-#litros{
+#litrost{
     font-size: 20px;
     font-weight: bold;
+    margin-left: 51px;
+    color: blue;
+}
+#litrosv{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 12px;
+    color: blue;
+}
+#litrostot{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 75px;
     color: blue;
 }
 
@@ -79,11 +91,7 @@ body
  .dataTables_info{
      display: none;
  }
- /* .botonPrincipal{
-     margin-top: 5px;
-     background: rgb(6,232,248);
-     color: #000;
- } */
+ 
  .registro{
      margin: 140px auto;
      background: #FFF;
@@ -109,35 +117,11 @@ body
      width: 80%;
      margin-bottom: 20px;
  }
- /* .boton-cerrar{
-     text-align: right;
- }
- .active, .menu-bar ul li:hover{
-    background:rgb(0,100,0);
-    border-radius: 3px;
- } */
+
  /*Card de datos de empresa*/
 .card{
     margin-top: 10px;
 }
-/* .sub-titulo-card{
-    font-size: 16px;
-    color: #082ae7;
-}
-.sub-titulo-direccion{
-    font-size: 16px;
-}
-.dato-empresa{
-    font-size: 14px;
-}
-
-.saludo{
-    font-size:12px;
-}
-.sub-menu{
-    font-size:13px;
-} */
-
 
 .asteriskField{
     display: none;
@@ -145,3 +129,6 @@ body
 .label{
     margin-bottom: .2rem;
     }
+.datos{
+    margin-bottom: 1px;
+}

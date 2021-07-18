@@ -5,8 +5,6 @@
     <div class="card">
         <div class="card-header">
           Categorias de animales
-          <a href="{% url 'produccion:catanimal-crear' %}" style="margin-left:20px;"><i class="fa fa-plus-square" aria-hidden="true" style="color:#050505; 
-            padding: 2px;"></i></a>
         </div>
         <div class="card-body">
             <table id="miTabla" class="display compact" style="font-size: 13px;">
@@ -24,18 +22,26 @@
                       <td>{{categoria.cat}}</td>
                       <td>{{categoria.det}}</td>
                       <td>
-                          <a href="{% url 'produccion:catanimal-edit' categoria.pk %}" style="margin-left:20px;"><i class="fa fa-edit" aria-hidden="true" style="color:#050505; 
-                            padding: 2px;"></i></a>
-                          <a href="{% url 'produccion:catanimal-delete' categoria.pk %}" style="margin-left:20px;"><i class="fa fa-trash-alt" aria-hidden="true" style="color:#050505; 
-                            padding: 2px;"></i></a>
+                        <a href="{% url 'produccion:catanimal-edit' categoria.pk %}" class="btn btn-warning btn-xs btn-flat">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{% url 'produccion:catanimal-delete' categoria.pk %}" class="btn btn-danger btn-xs btn-flat">
+                          <i class="fas fa-trash"></i>
+                        </a>
                       </td>
                   </tr>
                   {% endfor %}
               </tbody>
+            </table>
               {% else %}
             <h6>No se registraron categorías de animales al sistema</h6>
             {% endif %}
         </div>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'produccion:catanimal-crear' %}" class="btn btn-primary btn-sm">
+          <i class="fas fa-plus"></i> Nuevo Registro
+        </a>
       </div>
 </div>
 {% endblock %}

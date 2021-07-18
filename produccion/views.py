@@ -39,20 +39,25 @@ def produccionleche_list(request):
     end_date=request.GET.get('end_date')
 
     if start_date and end_date:
-        end_date = parse(end_date) + timedelta(1)
+        end_date = parse(end_date) # + timedelta(1) No hace falta porque toma un dia mas en el rango
         object_list = object_list.filter(
             fecha__range = [start_date,end_date]
         )
 
     suma = 0
+    terneros = 0
+    venta = 0
     for dato in object_list:
         d = dato.lts_total
+        c = dato.consumo
+        v = dato.venta
         suma = suma + d
+        terneros = terneros + c
+        venta = venta + v
 
-    context = {'object_list': object_list, 'suma':suma}
+    context = {'object_list': object_list, 'suma':suma, 'terneros':terneros, 'venta':venta}
     return render(request, template_name, context)
 
-         
 class ProdLecheCreate(CreateView):
     model = ProdLeche
     form_class = ProdLecheForm
@@ -91,8 +96,6 @@ def existencia_list(request):
     context = {'object_list':object_list}
     return render(request, template_name, context)
 
-
-
 class ExistenciaCreate(CreateView):
     model = ExistenciaTambo
     form_class = ExistenciaTamboForm
@@ -107,9 +110,26 @@ class ExistenciaDelete(DeleteView):
     model = ExistenciaTambo
     success_url =  reverse_lazy('produccion:existenciatambo-list')
 #--------------------------------------------------------------------
-class Recria(ListView):
-    model = ExistenciaRecria
+# class Recria(ListView):
+#     model = ExistenciaRecria
+#     template_name = 'produccion/existenciarecria_list.html'
+
+def recria_list(request):
     template_name = 'produccion/existenciarecria_list.html'
+    object_list = ExistenciaRecria.objects.all()
+
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    if start_date and end_date:
+        # Converte em data e adiciona um dia.
+        end_date = parse(end_date) 
+        object_list = object_list.filter(
+            fecha__range = [start_date, end_date]
+         )
+
+    context = {'object_list':object_list}
+    return render(request, template_name, context)
 
 class RecriaCreate(CreateView):
     model = ExistenciaRecria

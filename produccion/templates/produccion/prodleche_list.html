@@ -11,14 +11,11 @@
     <button class="btn btn-primary ml-2 my-sm-0" type="submit">Buscar</button>
   </form>
 </div>
-    <p>Producción total en el período seleccionado: <span id='litros'>{{suma}}</span> litros</p>
-    <div class="card">
+
+    <div class="card card-primary">
         <div class="card-header">
           Produccion diaria de leche 
-          <a href="{% url 'produccion:leche-create' %}" style="margin-left:20px;"><i class="fa fa-plus-square" aria-hidden="true" style="color:#050505; 
-            padding: 2px;"></i></a>
         </div>
-        
         <div class="card-body">
             <table id="miTabla" class="display compact" style="font-size: 13px;">
                 {% if object_list %}
@@ -39,18 +36,34 @@
                       <td>{{leche.consumo}}</td>
                       <td>{{leche.lts_total}}</td>
                       <td>
-                          <a href="{% url 'produccion:leche-edit' leche.pk %}" style="margin-left:20px;"><i class="fa fa-edit" aria-hidden="true" style="color:#050505; 
-                            padding: 2px;"></i></a>
-                          <a href="{% url 'produccion:leche-delete' leche.pk %}" style="margin-left:20px;"><i class="fa fa-trash-alt" aria-hidden="true" style="color:#050505; 
-                            padding: 2px;"></i></a>
+                        <a href="{% url 'produccion:leche-edit' leche.pk %}" class="btn btn-warning btn-xs btn-flat">
+                          <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="{% url 'produccion:leche-delete' leche.pk %}" class="btn btn-danger btn-xs btn-flat">
+                          <i class="fas fa-trash"></i>
+                        </a>
                       </td>
                   </tr>
                   {% endfor %}
               </tbody>
+            </table>
               {% else %}
             <h6>No se ingresaron registros al sistema</h6>
             {% endif %}
         </div>
+        <div class="card-footer">
+          <a href="{% url 'produccion:leche-create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Nuevo Registro
+          </a>
+        </div>
       </div>
+      
+      <div class="alert alert-warning">
+       <table>
+        <p style='font-weight: bold; font-family: bold;'>Resumen del período seleccionado</p>
+        <p style='' class="datos">Leche vendida a industria: <span id='litrosv'>{{venta}}</span> litros</p>
+        <p style='' class="datos">Leche para terneros: <span id='litrost'>{{terneros}}</span> litros</p>
+        <p style='' class="datos">Producción total: <span id='litrostot'>{{suma}}</span> litros</p>
+      </table>
 </div>
 {% endblock %}
