@@ -40,3 +40,4 @@ class GastoForm(forms.ModelForm):
     class Meta:
         model = Gasto
         fields = '__all__'
+        exclude = ('estado',)

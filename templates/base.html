@@ -64,7 +64,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class='iconos' src="{% static 'img/base.png'%}">
+                  <img class='iconos' src="{% static 'img/base.png'%}" data-toggle="tooltip" title="Cofigurar datos">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{% url 'produccion:alimento' %}">Tipo alimentos</a>
@@ -76,6 +76,19 @@
                   <a class="dropdown-item" href="{% url 'economico:dato-cliente' %}">Clientes</a>
                   <a class="dropdown-item" href="{% url 'economico:dato-proveedor' %}">Proveedores</a>
                 </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class='iconos' src="{% static 'img/datos1.png'%}" data-toggle="tooltip" title="Registrar datos">
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Ventas</a>
+                <a class="dropdown-item" href="{% url 'economico:gasto-crear' %}">Gastos</a>
+                <a class="dropdown-item" href="#">Retribución MO</a>
+                <a class="dropdown-item" href="{% url 'produccion:leche-create' %}">Producción Leche</a>
+                <a class="dropdown-item" href="{% url 'produccion:existenciatambo-crear' %}">Rodeo Tambo</a>
+                <a class="dropdown-item" href="#">Rodeo Recría</a>
+              </div>
             </li>
             <li class="nav-item dropdown">
               <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,32 +109,21 @@
                   <a class="dropdown-item" href="{% url 'produccion:recria-list' %}">Rodeo de Recría</a>
                 </div>
               </li>
+              
               <li class="nav-item dropdown">
                 <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class='iconos' src="{% static 'img/economico.png'%}">
+                  <img class='iconos' src="{% static 'img/economico2.jpeg'%}" data-toggle="tooltip" title="Listados de Gastos">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Todos los gastos</a>
-                  <a class="dropdown-item" href="#">Mano de Obra</a>
-                  <a class="dropdown-item" href="#">Sanidad</a>  
-                  <a class="dropdown-item" href="#">Suplementos Tambo</a>
-                  <a class="dropdown-item" href="#">Suplementos Recría</a>
-                  <a class="dropdown-item" href="#">Higiene de tambo</a>
-                  
-                  <a class="dropdown-item" href="#">Combustibles</a>
-                  <a class="dropdown-item" href="#">Implantación de pasturas</a>
-                  <a class="dropdown-item" href="#">Reparaciones</a>
-                  <a class="dropdown-item" href="#">Servicios</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class='iconos' src="{% static 'img/economico2.jpeg'%}">
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Todas las ventas</a>
-                  <a class="dropdown-item" href="#">Ventas de leche</a>
-                  <a class="dropdown-item" href="#">Ventas de carne</a>
+                  <a class="dropdown-item" href="{% url 'economico:listado-gastos' %}">Todos los Gastos</a>
+                  <a class="dropdown-item" href="#">Gastos: Alimentación</a>
+                  <a class="dropdown-item" href="#">Gastos: Comb. y Lubricantes</a>
+                  <a class="dropdown-item" href="#">Gastos: Conserv. Mejoras</a>
+                  <a class="dropdown-item" href="#">Gastos: Higiene de tambo</a>
+                  <a class="dropdown-item" href="#">Gastos: Impl.y conserv. de pasturas</a>
+                  <a class="dropdown-item" href="#">Gastos: Personal</a>
+                  <a class="dropdown-item" href="#">Gastos: Sanidad</a>
+                  <a class="dropdown-item" href="#">Gastos: Servicios</a>
                 </div>
               </li>
               <li class="nav-item dropdown">

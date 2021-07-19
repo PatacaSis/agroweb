@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from dateutil.parser import parse
+from datetime import timedelta
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.views.generic.list import ListView
@@ -153,13 +155,30 @@ def GastosList(request):
     gastos = Gasto.objects.filter(estado=True)
     return render(request, 'economico/gasto_list.html', {'gastos':gastos})
 
+def listado_gastos(request):
+    template_name = 'economico/listado_gastos.html'
+    object_list = Gasto.objects.all()
+
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    if start_date and end_date:
+        # Converte em data e adiciona um dia.
+        end_date = parse(end_date) + timedelta(1)
+        object_list = object_list.filter(
+            fecha__range = [start_date, end_date]
+         )
+
+    context = {'object_list':object_list}
+    return render(request, template_name, context)
+
 class GastoCrear(CreateView):
     model = Gasto
     form_class = GastoForm
     success_url = reverse_lazy('economico:gasto')
 
 class GastoEdit(UpdateView):
-    model = Cliente
+    model = Gasto
     form_class = GastoForm
     success_url = reverse_lazy('economico:gasto')
 

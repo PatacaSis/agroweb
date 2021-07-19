@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import EmpleadoCrear, EmpleadoDelete, EmpleadoEdit, EmpleadoList, GastosList, RubroGastoList,RubroGastoEdit,RubroGastoCrear,RubroGastoDelete, RubroVentaEdit,RubroVentaList,RubroVentaCrear,RubroVentaDelete,SubrubroGastoList,SubrubroGastoCrear,SubrubroGastoEdit,SubrubroGastoDelete, UmedidaList,UmedidaCrear,UmedidaEdit,UmedidaDelete,ClienteList,ClienteCrear,ClienteEdit,ClienteDelete,ProveedorList,ProveedorCrear,ProveedorEdit,ProveedorDelete,GastosList,GastoCrear
+from .views import EmpleadoCrear, EmpleadoDelete, EmpleadoEdit, EmpleadoList, GastosList, RubroGastoList,RubroGastoEdit,RubroGastoCrear,RubroGastoDelete, RubroVentaEdit,RubroVentaList,RubroVentaCrear,RubroVentaDelete,SubrubroGastoList,SubrubroGastoCrear,SubrubroGastoEdit,SubrubroGastoDelete, UmedidaList,UmedidaCrear,UmedidaEdit,UmedidaDelete,ClienteList,ClienteCrear,ClienteEdit,ClienteDelete,ProveedorList,ProveedorCrear,ProveedorEdit,ProveedorDelete,GastosList,GastoCrear,GastoEdit,GastoDelete,listado_gastos
 
 
 
@@ -42,5 +42,8 @@ urlpatterns = [
     path('datos/proveedores/borrar/<int:pk>/', ProveedorDelete.as_view(), name='dato-proveedor-delete'),
 
     path('gastos/', GastosList, name='gasto'),
+    path('listado/gastos', listado_gastos, name='listado-gastos'),
     path('gastos/nuevo/', GastoCrear.as_view(), name='gasto-crear'),
+    path('gastos/editar/<int:pk>/', GastoEdit.as_view(), name='gasto-edit'),
+    path('gastos/eliminar/<int:pk>/', GastoDelete.as_view(), name='gasto-delete'),
 ]

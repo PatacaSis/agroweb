@@ -34,6 +34,7 @@ from .forms import ProdLecheForm,AlimentoForm,ExistenciaTamboForm,ExistenciaRecr
 def produccionleche_list(request):
     template_name = 'produccion/prodleche_list.html'
     object_list = ProdLeche.objects.all()
+    
 
     start_date=request.GET.get('start_date')
     end_date=request.GET.get('end_date')
